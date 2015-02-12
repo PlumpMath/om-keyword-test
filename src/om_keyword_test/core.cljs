@@ -1,5 +1,5 @@
 (ns om-keyword-test.core
-  (:require [om.core :as om]
+  (:require [om.core :as om :include-macros true]
             [om.dom :as dom]))
 
 (enable-console-print!)
@@ -19,7 +19,7 @@
 (def app-state (atom {:person {:field/name :david}}))
 
 (om/root
- (fn [app owner]
+ (fn [data owner]
    (reify om/IRender
      (render [_]
        (om/build greeter (:person data) {:fn identity}))))
